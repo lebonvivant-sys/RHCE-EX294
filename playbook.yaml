@@ -1,0 +1,21 @@
+- hosts: server02
+  vars:
+    dir1: /etc/issue.d
+    dir2: /etc/motd.d
+    files_unique: "{{ out.files | map(attribute='path') | list }}"
+
+  tasks:
+    - find:
+        paths: "{{ dir1 }},{{ dir2 }}"
+        file_type: link 
+        get_checksum: false
+      register: out
+    - debug:
+        #var: out
+        var: files_unique
+    - file:
+        #src: "{{ item }}"
+        path: "{{ item }}"
+        state: absent
+      loop: "{{ files_unique }}"
+
