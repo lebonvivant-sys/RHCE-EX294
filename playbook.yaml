@@ -1,4 +1,5 @@
 - hosts: server02
+  name: remove softlinks from folder /etc/issue.d and /etc/mot.d
   vars:
     dir1: /etc/issue.d
     dir2: /etc/motd.d
