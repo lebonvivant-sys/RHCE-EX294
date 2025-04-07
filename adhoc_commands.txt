@@ -1,0 +1,2 @@
+ansible -i server05.example.com, all -m shell -a 'useradd automation -u 1010' -u mickeymouse -b -k
+
